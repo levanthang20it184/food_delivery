@@ -5,6 +5,11 @@ import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/until/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -16,9 +21,16 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
+    Future<void> _LoadResoure()
+  async {
+    await Get.find<PopularProductController>().getPopularProductlist();
+    await Get.find<RecommendedProductController>().getRecommendedProductlist();
+
+  }
+
     // print("current height is "+MediaQuery.of(context).size.width.toString());
-    return Scaffold(
-      body: Column(
+    return RefreshIndicator(
+      child: Column(
         children: [
           //show header
           Container(
@@ -57,7 +69,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
           )),
 
         ],
-      ),
-    );
+      ), 
+      onRefresh: _LoadResoure);
   }
 }

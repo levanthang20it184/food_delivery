@@ -65,7 +65,8 @@ class PopularFoodDetail extends StatelessWidget {
                       Get.toNamed(RouterHelper.getInitial());
                     }
                   },
-                  child: AppIcon(icon: Icons.arrow_back_ios)),
+                  child: AppIcon(icon: Icons.arrow_back_ios)
+                  ),
                   GetBuilder<PopularProductController>(builder: (controller){
                     return GestureDetector(
                         
