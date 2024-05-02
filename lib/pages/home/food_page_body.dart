@@ -74,7 +74,7 @@ void dispose()
         GetBuilder<PopularProductController>(builder: (popularProducts){
           return DotsIndicator(
               dotsCount: popularProducts.popularProductList.isEmpty?1:popularProducts.popularProductList.length,
-              position: _currPageValue,
+              position: _currPageValue.toInt(),// có sửa khi lỗi chạy dự án
               decorator: DotsDecorator(
                 activeColor: Color.fromARGB(255, 24, 243, 243),
                 size: Size.square(9.0),

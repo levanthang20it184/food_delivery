@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery/base/custom_loader.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:food_delivery/controllers/user_controller.dart';
 import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/routes/route_helper.dart';
@@ -92,17 +93,43 @@ class AccountPage extends StatelessWidget {
                             bigText: BigText(text: userController.userModel.email),),
                             SizedBox(height: Dimensions.height30,),
                           //adress
-                          AccountWidget(
-                            appIcon: 
-                            AppIcon(
-                              icon: Icons.location_on,
-                              backgroudColor:  Color.fromARGB(255, 243, 208, 33),
-                              iconColor: Colors.white,
-                              size: Dimensions.height10*5,
-                              iconSize: Dimensions.height10*5/2,
-                              ), 
-                            bigText: BigText(text: "Hoa Thủy"),),
-                            SizedBox(height: Dimensions.height30,),
+                          GetBuilder<LocationController>(builder: (locationController){
+                            if (_userLoggedIn&&locationController.addressList.isEmpty) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.offNamed(RouterHelper.getAddressPage());
+                                },
+                                child: AccountWidget(
+                                                          appIcon: 
+                                                          AppIcon(
+                                icon: Icons.location_on,
+                                backgroudColor:  Color.fromARGB(255, 243, 208, 33),
+                                iconColor: Colors.white,
+                                size: Dimensions.height10*5,
+                                iconSize: Dimensions.height10*5/2,
+                                ), 
+                                                          bigText: BigText(text: "Hoa Thủy"),),
+                              );
+                            
+                            }else{
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.offNamed(RouterHelper.getAddressPage());
+                                },
+                                child: AccountWidget(
+                                                          appIcon: 
+                                                          AppIcon(
+                                icon: Icons.location_on,
+                                backgroudColor:  Color.fromARGB(255, 243, 208, 33),
+                                iconColor: Colors.white,
+                                size: Dimensions.height10*5,
+                                iconSize: Dimensions.height10*5/2,
+                                ), 
+                                                          bigText: BigText(text: "You address"),),
+                              );
+                            }
+                          }),
+                          SizedBox(height: Dimensions.height30,),
                           //message
                           AccountWidget(
                             appIcon: 
@@ -121,6 +148,7 @@ class AccountPage extends StatelessWidget {
                                 Get.find<AuthController>().clearSharedData();
                                 Get.find<CartController>().clear();
                                 Get.find<CartController>().clearCartHistory();
+                                Get.find<LocationController>().clearAddessList();
                                 Get.offAndToNamed(RouterHelper.getInitial());
                               }else{
                                 print("you logout");

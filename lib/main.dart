@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
-import 'package:food_delivery/pages/auth/sign_in_page.dart';
-import 'package:food_delivery/pages/auth/sign_up_page.dart';
-import 'package:food_delivery/pages/splash/splash_page.dart';
+// import 'package:food_delivery/pages/auth/sign_in_page.dart';
+// import 'package:food_delivery/pages/auth/sign_up_page.dart';
+// import 'package:food_delivery/pages/splash/splash_page.dart';
 // import 'package:food_delivery/pages/cart/cart_page.dart';
 // import 'package:food_delivery/pages/food/popular_food_detail.dart';
 // import 'package:food_delivery/pages/food/recommend_food_detail.dart';
@@ -33,6 +33,10 @@ class MyApp extends StatelessWidget {
           // home: SignInPage(),
           initialRoute: RouterHelper.getSplashPage(),
           getPages: RouterHelper.routes,
+          theme: ThemeData(
+            primaryColor: Color.fromARGB(255, 54, 232, 176),
+            fontFamily: "Lato"
+          ),
         );
       });
     });

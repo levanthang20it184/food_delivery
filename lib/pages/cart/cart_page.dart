@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery/base/no_data_page.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
+import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
@@ -219,8 +220,15 @@ class CartPage extends StatelessWidget {
                             onTap: () {
                               // popularProduct.addItem(product);
                               if (Get.find<AuthController>().userLoggedIn()) {
-                                print("tapped");
-                                cartController.addToHistory();
+                                if (Get.find<LocationController>().addressList.isEmpty) {
+
+                                  Get.offNamed(RouterHelper.getAddressPage());
+                                }else{
+                                   cartController.addToHistory();
+                                  Get.offNamed(RouterHelper.getInitial());
+                                }
+                                // print("tapped");
+                                // cartController.addToHistory();
                               }else{
                                 Get.toNamed(RouterHelper.GetSignInPage());
                               }

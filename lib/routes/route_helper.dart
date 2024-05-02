@@ -1,3 +1,5 @@
+import 'package:food_delivery/pages/address/add_address_page.dart';
+import 'package:food_delivery/pages/address/pick_address_map.dart';
 import 'package:food_delivery/pages/auth/sign_in_page.dart';
 import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
@@ -15,6 +17,8 @@ class RouterHelper{
   static const String cartPage = "/cart-page";
   static const String signIn = "/sign-in";
 
+  static const String addAddress="/add-address";
+  static const String pickAddressMap="/pick-address";
 
   static String getSplashPage()=>'$splashPage';
   static String getInitial()=>'$initial';
@@ -22,11 +26,15 @@ class RouterHelper{
   static String getRecommendedFood(int pageId, String page)=>'$recommendedFood?pageId=$pageId&page=$page';
   static String getCartPage()=>'$cartPage';
   static String GetSignInPage()=>'$signIn';
+  static String getAddressPage()=>'$addAddress';
+  static String getPickAddressPage()=>'$pickAddressMap';
 
 
   static List<GetPage> routes=[
     GetPage(name: splashPage, page: ()=>SplashScreen()),
-    GetPage(name: initial, page: ()=>HomePage()),
+    GetPage(name: initial, page: (){
+     return HomePage();
+    }, transition: Transition.fade),
     GetPage(name: signIn, page: (){
       return SignInPage();
     },
@@ -52,8 +60,13 @@ class RouterHelper{
     },
     transition: Transition.fadeIn
     ),
-    
-
+    GetPage(name: addAddress, page: (){
+      return AddAddressPage();
+    }),
+    GetPage(name: pickAddressMap, page: (){
+      PickAddressMap _pickAddressMap=Get.arguments;
+      return _pickAddressMap; 
+    }),
 
   ];
 }
