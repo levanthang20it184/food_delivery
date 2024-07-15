@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery/base/no_data_page.dart';
+import 'package:food_delivery/base/show_custom_snackbar.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/controllers/location_controller.dart';
+import 'package:food_delivery/controllers/order_controller.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/controllers/user_controller.dart';
+import 'package:food_delivery/models/place_order_model.dart';
 import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/pages/food/recommend_food_detail.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
@@ -224,8 +228,27 @@ class CartPage extends StatelessWidget {
 
                                   Get.offNamed(RouterHelper.getAddressPage());
                                 }else{
-                                   cartController.addToHistory();
-                                  Get.offNamed(RouterHelper.getInitial());
+                                  var location = Get.find<LocationController>().getUserAddress();
+                                  var cart = Get.find<CartController>().getItems;
+                                  var user = Get.find<UserController>().userModel;
+                                  PlaceOrderModel placeOrderModel = PlaceOrderModel(
+                                    cart: cart, 
+                                    orderAmount: 100.00, 
+                                    orderNote: "Not about the food", 
+                                    address: location.address, 
+                                    latitude: location.latitude, 
+                                    longitude: location.longitude, 
+                                    contactPersonName: user!.name, 
+                                    contactPersonNumber: user!.phone
+                                    );
+                                  // cartController.addToHistory();
+                                  // Get.offNamed(RouterHelper.getInitial());
+                                  //Get.find<UserController>().userModel!.id! thay cho 27
+                                  // Get.offNamed(RouterHelper.getPaymentPage("100003", 27));
+                                  Get.find<OrderController>().placeOder(
+                                    placeOrderModel,
+                                    _callback
+                                    );
                                 }
                                 // print("tapped");
                                 // cartController.addToHistory();
@@ -253,5 +276,13 @@ class CartPage extends StatelessWidget {
             },),
       
     );
+  }
+  void _callback(bool isSuccess, String message, String orderID)
+  {
+    if (isSuccess) {
+      Get.offNamed(RouterHelper.getPaymentPage(orderID, Get.find<UserController>().userModel!.id));
+    } else {
+      ShowCustomSnackBar(message);
+    }
   }
 }
