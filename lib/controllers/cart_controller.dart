@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/data/respository/cart_repo.dart';
 import 'package:food_delivery/models/products_model.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/cart_model.dart';
 
 class CartController extends GetxController{
@@ -135,5 +136,9 @@ class CartController extends GetxController{
      cartRepo.clearCartHistory();
     update();
    
+  }
+  void removeCartSharedPreference()
+  {
+    cartRepo.removeCartSharedPreference;
   }
 }

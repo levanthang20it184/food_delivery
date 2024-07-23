@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:food_delivery/base/custom_app_bar.dart';
 import 'package:food_delivery/base/custom_loader.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
@@ -26,16 +27,7 @@ class AccountPage extends StatelessWidget {
       // print("User has logg");
     }
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 33, 229, 243),
-        title: BigText(
-          text: "Profile", 
-          size: 24,
-          color: Colors.white,
-          ),
-      ),
+      appBar: CustomAppBar(title: "Profile"),
       body: GetBuilder<UserController>(builder: (userController){
         return _userLoggedIn?
         (userController.isLoading?Container(

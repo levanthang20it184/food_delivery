@@ -7,6 +7,7 @@ import 'package:food_delivery/pages/auth/sign_in_page.dart';
 import 'package:food_delivery/pages/auth/sign_up_page.dart';
 import 'package:food_delivery/pages/cart/cart_history.dart';
 import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/pages/order/order_page.dart';
 
 import '../account/account_page.dart';
 
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages=[
     MainFoodPage(),
-    Container(child: Text("History page !"),),
+    OrderPage(),
     CartHistory(),
     AccountPage(),
 
@@ -34,6 +35,7 @@ class _HomePageState extends State<HomePage> {
       _seclectIndex=index;
     });
   }
+
   // @override
   // void initState(){
   //   super.initState();
