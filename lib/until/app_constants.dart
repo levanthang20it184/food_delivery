@@ -28,6 +28,7 @@ class AppConstants{
   // static const String TOKEN="DBtoken";
   static const String TOKEN="";
   static const String PHONE="";
+  static const String EMAIL="";
   static const String PASSWORD="";
   static const String CART_LIST="Cart-list";
   static const String CART_HISTORY_LIST="cart-history-list";

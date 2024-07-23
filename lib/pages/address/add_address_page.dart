@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:food_delivery/base/custom_app_bar.dart';
 import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/controllers/location_controller.dart';
 import 'package:food_delivery/controllers/user_controller.dart';
@@ -67,10 +68,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Address Page"),
-        backgroundColor: Color.fromARGB(255, 33, 233, 243),
-      ),
+      appBar: CustomAppBar(title: "Address Page"),
       body: GetBuilder<UserController>(builder: (userController){
 
           if (userController.userModel!=null&&_contactPersonName.text.isEmpty) {
@@ -86,7 +84,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
         '${locationController.placemark.locality??''}'
         '${locationController.placemark.postalCode??''}'
         '${locationController.placemark.country??''}';
-        print("adddress my view :::::::::::::::::::::"+_addressController.text);
+        // print("adddress my view :::::::::::::::::::::"+_addressController.text);
       return  SingleChildScrollView(
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
