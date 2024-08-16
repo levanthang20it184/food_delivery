@@ -7,13 +7,13 @@ class AppTextField extends StatelessWidget {
   final TextEditingController textController;
   final String hintText;
   final IconData icon;
+  bool maxLines;
   bool isObscure;
-  AppTextField({super.key, required this.textController, required this.hintText, required this.icon, this.isObscure=false});
+  AppTextField({super.key, required this.textController, required this.hintText, required this.icon, this.isObscure=false, this.maxLines=false});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-                
+    return  Container(  
                 margin: EdgeInsets.only(left: Dimensions.width20,right: Dimensions.width20),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -28,6 +28,7 @@ class AppTextField extends StatelessWidget {
                   ]
                 ),
                 child: TextField(
+                  maxLines: maxLines?3:1,
                   obscureText: isObscure?true:false,
                   controller: textController,
                   decoration: InputDecoration(

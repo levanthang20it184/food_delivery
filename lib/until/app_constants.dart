@@ -8,7 +8,7 @@ class AppConstants{
   static const String RECOMMENDED_PRODUCT_URI="/apis/v1/products/recommended";
   // static const String DRINKS_URL="/api/v1/products/drinks";
   // auth end point
-  static const String REGISTRATION_URI="/api/v1/auth/register";
+  static const String REGISTRATION_URI="/apis/v1/auth/register";
   static const String LOGIN_URI="/apis/v1/auth/login";
   static const String USER_INFO_URI="/apis/v1/customer/info";
   
@@ -32,4 +32,6 @@ class AppConstants{
   static const String PASSWORD="";
   static const String CART_LIST="Cart-list";
   static const String CART_HISTORY_LIST="cart-history-list";
+  static const String TOKEN_URI = '/apis/v1/customer/cm-firebase-token';
+
 }

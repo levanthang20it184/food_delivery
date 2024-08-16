@@ -10,7 +10,11 @@ class UserController extends GetxController implements GetxService{
   final UserRepo userRepo;
   UserController({
     required this.userRepo,
-  });
+  })
+  {
+    // Khởi tạo mặc định cho _userModel
+    _userModel = UserModel(email: '', name: '', id: 0, orderCount: 0, phone: ''); // Dòng đã thay đổi
+  }
   
   bool _isLoading = false;
   late UserModel _userModel;

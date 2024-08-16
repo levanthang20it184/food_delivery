@@ -5,8 +5,8 @@ class PlaceOrderModel {
   List<CartModel>? _cart; // 여기처럼 private 하게 선언하였고
   late double _orderAmount;
   late String _orderNote;
-  // late String _orderType;
-  // late String _paymentMethod;
+  late String _orderType;
+  late String _paymentMethod;
   // late double _distance;
   late String _address;
   late String _latitude;
@@ -18,8 +18,8 @@ class PlaceOrderModel {
       {required cart, // required 사용했고, option 도 사용했고,
       required orderAmount,
       required orderNote,
-      // required orderType,
-      // required paymentMethod,
+      required orderType,
+      required paymentMethod,
       // required distance,
       required address,
       required latitude,
@@ -28,8 +28,8 @@ class PlaceOrderModel {
       required contactPersonNumber}) {
     _cart = cart; // 여기에서 외부값을 필드에 초기화를 해주었고
     _orderNote = orderNote;
-    // _orderType = _orderType;
-    // _paymentMethod = _paymentMethod;
+    _orderType = orderType;
+    _paymentMethod = paymentMethod;
     _orderAmount = orderAmount;
     // _distance = distance;
     _address = address;
@@ -45,9 +45,9 @@ class PlaceOrderModel {
 
   String get orderNote => _orderNote;
 
-  // String get orderType => _orderType;
+  String get orderType => _orderType;
 
-  // String get paymentMethod => _paymentMethod;
+  String get paymentMethod => _paymentMethod;
 
   String get contactPersonNumber => _contactPersonNumber;
 
@@ -79,8 +79,8 @@ class PlaceOrderModel {
     }
     _orderAmount = json['order_amount'];
     _orderNote = json['order_note'];
-    // _orderType = json['order_type'];
-    // _paymentMethod = json['payment_method'];
+    _orderType = json['order_type'];
+    _paymentMethod = json['payment_method'];
     // _distance = json['distance'];
     _address = json['address'];
     _latitude = json['latitude'];
@@ -100,8 +100,8 @@ class PlaceOrderModel {
     }
     data['order_amount'] = _orderAmount;
     data['order_note'] = _orderNote;
-    // data['order_type'] = _orderType;
-    // data['payment_method'] = _paymentMethod;
+    data['order_type'] = _orderType;
+    data['payment_method'] = _paymentMethod;
     // data['distance'] = _distance;
     data['address'] = _address;
     data['longitude'] = _longitude;

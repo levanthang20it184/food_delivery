@@ -34,13 +34,15 @@ class AuthController extends GetxController implements GetxService{
     // print(authRepo.getUserToken().toString());
     _isLoading=true;
     update();
-    Response response = await authRepo.login(email,password);
     late ResponseModel responseModel;
+    Response response = await authRepo.login(email,password);
+    
     if (response.statusCode==200) {
       // print("Backend token");
       authRepo.saveUserToken(response.body["token"]);
-      print("My token :"+response.body["token"]);
+      
       responseModel = ResponseModel(true, response.body["token"]);
+      print("My token :"+response.body["token"]);
     }else{
       responseModel = ResponseModel(false, response.statusText!);
     }
@@ -57,5 +59,8 @@ class AuthController extends GetxController implements GetxService{
   bool clearSharedData()
   {
     return authRepo.clearSharedData();
+  }
+  void updateToken() async {
+    await authRepo.updateToken();
   }
 }

@@ -46,7 +46,7 @@ class OrderSuccessPage extends StatelessWidget {
                     horizontal: Dimensions.height20,
                     vertical: Dimensions.height10),
                 child: Text(
-                  status == 1 ? 'Successful order' : 'Failed order',
+                  status == 1 ? 'Successful order ID: '+orderId : 'Failed order ID: '+orderId,
                   style: TextStyle(
                       fontSize: Dimensions.font20,
                       color: Theme.of(context).disabledColor),

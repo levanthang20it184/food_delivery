@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/until/dimensions.dart';
 import 'package:get/get.dart';
@@ -31,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   void initState()
   {
     super.initState();
+    Get.find<AuthController>().updateToken();
     _LoadResoure();
     controller = AnimationController(
       vsync: this, 
