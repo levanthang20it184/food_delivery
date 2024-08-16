@@ -450,7 +450,7 @@ class CartPage extends StatelessWidget {
                                     // cartController.addToHistory();
                                     // Get.offNamed(RouterHelper.getInitial());
                                     //Get.find<UserController>().userModel!.id! thay cho 27
-                                    // Get.offNamed(RouterHelper.getPaymentPage("100003", 27));
+                                    // Get.offNamed(RouterHelper.getPaymentPage("100102", 69));
                                     Get.find<OrderController>()
                                         .placeOder(placeOrderModel, _callback);
                                   }
@@ -481,9 +481,12 @@ class CartPage extends StatelessWidget {
       Get.find<CartController>().removeCartSharedPreference();
       Get.find<CartController>().addToHistory();
       if (Get.find<OrderController>().paymentIndex==0) {
+
         Get.offNamed(RouterHelper.getOrderSuccessPage(orderID, "success"));
       }else{
+        
         Get.offNamed(RouterHelper.getPaymentPage(orderID, Get.find<UserController>().userModel!.id));
+        
       }
     } else {
       ShowCustomSnackBar(message);

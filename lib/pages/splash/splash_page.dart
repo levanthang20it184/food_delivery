@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   void initState()
   {
     super.initState();
-    Get.find<AuthController>().updateToken();
+    // Get.find<AuthController>().updateToken();
     _LoadResoure();
     controller = AnimationController(
       vsync: this, 

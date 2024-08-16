@@ -26,11 +26,11 @@ import 'heper/dependencies.dart' as dep;
 
 // final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 Future<void> main() async {
-  setPathUrlStrategy(); // part 8 에서 추가된 부분
+  // setPathUrlStrategy(); // part 8 에서 추가된 부분
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
   await dep.init();
-   // part 8 에서 추가된 부분
+   
   // try {
   //   if (GetPlatform.isMobile) { // 모바일일 때 이렇게 하면 되는구나. 웹일때는 다르게 하고.. 다트에서 기본으로 지원해주는 함수이네..
   //     // 모든 메세지를 파이어베이스 콘솔에서 받아온다.
