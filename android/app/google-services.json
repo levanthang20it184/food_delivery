@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "51813461968",
+    "firebase_url": "https://kotlinmesseger-98af8-default-rtdb.firebaseio.com",
+    "project_id": "kotlinmesseger-98af8",
+    "storage_bucket": "kotlinmesseger-98af8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51813461968:android:2782c1c68a1c0d09cc93d5",
+        "android_client_info": {
+          "package_name": "com.example.food_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51813461968-qef1cca0ampjb57r81ns51qkruq4pva2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRmCZCbpJ09A38SyBWmHr1fi_wOOe5X8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51813461968-qef1cca0ampjb57r81ns51qkruq4pva2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
